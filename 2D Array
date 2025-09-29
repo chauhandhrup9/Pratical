@@ -1,0 +1,78 @@
+```python
+# Menu-driven program for 2D Array operations: Add, Update, Delete
+
+def create_matrix():
+    rows = int(input("Enter number of rows: "))
+    cols = int(input("Enter number of columns: "))
+    matrix = []
+
+    print(f"Enter elements for {rows}x{cols} matrix:")
+    for i in range(rows):
+        row = []
+        for j in range(cols):
+            val = int(input(f"Enter element at [{i}][{j}]: "))
+            row.append(val)
+        matrix.append(row)
+    return matrix
+
+def display_matrix(matrix):
+    print("Current Matrix:")
+    for row in matrix:
+        print(row)
+
+def add_element(matrix):
+    r = int(input("Enter row index to add element: "))
+    c = int(input("Enter column index to add element: "))
+    val = int(input("Enter value to insert: "))
+    if r < len(matrix) and c < len(matrix[0]):
+        matrix[r][c] = val
+        print("Element added successfully.")
+    else:
+        print("Invalid position!")
+
+def update_element(matrix):
+    r = int(input("Enter row index to update element: "))
+    c = int(input("Enter column index to update element: "))
+    if r < len(matrix) and c < len(matrix[0]):
+        val = int(input("Enter new value: "))
+        matrix[r][c] = val
+        print("Element updated successfully.")
+    else:
+        print("Invalid position!")
+
+def delete_element(matrix):
+    r = int(input("Enter row index to delete element: "))
+    c = int(input("Enter column index to delete element: "))
+    if r < len(matrix) and c < len(matrix[0]):
+        matrix[r][c] = 0  # logical delete
+        print("Element deleted (set to 0).")
+    else:
+        print("Invalid position!")
+
+# Main program
+matrix = create_matrix()
+
+while True:
+    print("\nMenu:")
+    print("1. Display Matrix")
+    print("2. Add Element")
+    print("3. Update Element")
+    print("4. Delete Element")
+    print("5. Exit")
+    
+    choice = int(input("Enter your choice: "))
+    
+    if choice == 1:
+        display_matrix(matrix)
+    elif choice == 2:
+        add_element(matrix)
+    elif choice == 3:
+        update_element(matrix)
+    elif choice == 4:
+        delete_element(matrix)
+    elif choice == 5:
+        print("Exiting program...")
+        break
+    else:
+        print("Invalid choice! Please try again.")
+```
